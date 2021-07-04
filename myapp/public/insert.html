@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert</title>
+    <script src="react/react.development.js"></script>
+    <script src="react/react-dom.development.js"></script>
+    <script src="react/prop-types.js"></script>
+  <script src="react/axios.min.js"></script>
+    <script src="react/babel.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Roboto Mono|Ubuntu|Eczar|Scope One|Cutive">
+    <link rel="stylesheet" type="text/css" href="css/insert.css">
+  </head>
+  <body>
+    <center>
+   <header style="background-color:#194350; color:#FBC7F7 ; text-align: center; padding-top:14px;padding-bottom: 16px;margin-bottom: 4px; border-radius: 8px; font-family: Cutive; width: 100%; font-size: 40px; " >
+    <center>
+    <header style="background-color:#C84B31 ;width: 50%; color:white ; border-radius:0px; "><strong>STUDENT &nbsp  MARKS &nbsp  DETAILS</strong></header>
+    </center>
+</header>
+   <img class="mySlides" src="images/1.jpeg">  
+    <!--<div>
+   
+  <img class="mySlides" src="images/30.jpg">
+  <img class="mySlides" src="images/25.jpg">
+  <img class="mySlides" src="images/28.jpg">
+  <img class="mySlides" src="images/29.jpg">
+  <img class="mySlides" src="images/31.jpg">
+  <img class="mySlides" src="images/33.jpg">
+  <img class="mySlides" src="images/32.jpg">
+  <img class="mySlides" src="images/34.jpg">
+     </div>-->
+    <center><ul>
+        <li><a href="index.html"><strong>HOME</strong></a></li>
+        <li><a href="insert.html"><strong>INSERT</a></strong></li>
+        <li><a href="update1.html"><strong>UPDATE</a></strong></li>
+        <li><a href="delete.html"><strong>DELETE</a></strong></li>
+        <li><a href="search.html"><strong>SEARCH</a></strong></li>
+        <li><a href="/display"><strong>DISPLAY</strong></a></li>
+    </ul></center>
+    <br><br><br><br><br>  
+    <center><h1>ENTER STUDENT'S MARKS</h1></center>
+
+    <div id="root"></div>
+    <script type="text/babel">
+
+class App extends React.Component{
+  
+  constructor(props) {
+  super(props);
+  this.state = {
+  studusn: '',
+  studname: '',
+  studph: '',
+  marks_maths: '',
+  marks_daa: '',
+  marks_os: '',
+  marks_mces: '',
+  marks_ooc: '',
+  marks_dc: '',
+  studper: '',
+  studdata:[]
+  }
+  };
+  
+handleSubmit(e){
+    e.preventDefault();
+  const mydata1=
+  {
+    studusn: this.state.studusn,
+    studname: this.state.studname,
+    studph: this.state.studph,
+    marks_maths: this.state.marks_maths,
+    marks_daa: this.state.marks_daa,
+    marks_os: this.state.marks_os,
+    marks_mces: this.state.marks_mces,
+    marks_ooc: this.state.marks_ooc,
+    marks_dc: this.state.marks_dc
+    
+  };
+    axios({
+      method: "POST", 
+      url:"http://localhost:9999/api/savedata", 
+      data:  mydata1,
+   
+    }).then((response)=>{
+    console.log("Data has been sent to server");
+      if (response.data.status === 'success'){
+       console.log("Data has been submitted");
+    console.log(response.data.mydata.studusn+":"+response.data.mydata.studname+":"+response.data.mydata.studph+":"+response.data.mydata.marks_maths+":"+response.data.mydata.marks_daa+":"+response.data.mydata.marks_os+":"+response.data.mydata.marks_mces+":"+response.data.mydata.marks_ooc+":"+response.data.mydata.marks_dc+":"+response.data.mydata.serverMessage);
+    const myresponsedata = JSON.stringify(response.data.mydata)
+    this.setState({studdata:myresponsedata})
+        this.resetForm()
+      }else if(response.data.status === 'fail'){
+        alert("Duplicate Student USN")
+    this.resetForm()
+      }
+    
+    })
+  .catch((e) => {
+  console.log("Internal Server error"+e);
+  });;
+  
+  };
+
+  resetForm(){
+     this.setState({studusn: '',
+  studname: '',
+  studph: '',
+  marks_maths: '',
+  marks_daa: '',
+  marks_os: '',
+  marks_mces: '',
+  marks_ooc: '',
+  marks_dc: '',
+  studper: ''})
+  };
+
+    
+  render() {
+     //console.log("State:",this.state)
+  return(
+
+
+    
+    <div className="App">
+    <form  id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+    <div className="form-group">
+        <label  htmlFor="studusn">STUDENT USN&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   </label>
+        <input type="text" className="form-control" id="studusn" name="studusn" value={this.state.studusn} onChange={this.onStudChange.bind(this)} />
+    </div>
+   <br/>
+    <div className="form-group">
+        <label htmlFor="studname">STUDENT NAME&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;    </label>
+        <input type="text" className="form-control"  id="studname" name="studname" value={this.state.studname} onChange={this.onStudChange.bind(this)} />
+    </div>
+    <br/>
+    <div className="form-group">
+        <label htmlFor="studph">STUDENT PHONE&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+        <input type="text" className="form-control"  id="studph" name="studph" value={this.state.studph} onChange={this.onStudChange.bind(this)} />
+    </div>
+    <br/>
+    <div className="form-group">
+        <label htmlFor="marks_maths">ENGG. MATHS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </label>
+        <input type="text" className="form-control"  id="marks_maths" name="marks_maths" value={this.state.marks_maths} onChange={this.onStudChange.bind(this)} />
+    </div>
+    <br/>
+   <div className="form-group">
+        <label htmlFor="marks_daa">DESIGN ANALYSIS &ALGORITHMS&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; </label>
+        <input type="text" className="form-control"  id="marks_daa" name="marks_daa" value={this.state.marks_daa} onChange={this.onStudChange.bind(this)} />
+    </div>
+    <br/>
+    <div className="form-group">
+        <label htmlFor="marks_os">OPERATING SYSTEMS&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+        <input type="text" className="form-control"  id="marks_os" name="marks_os" value={this.state.marks_os} onChange={this.onStudChange.bind(this)} />
+    </div>
+    <br/>
+    <div className="form-group">
+        <label htmlFor="marks_mces">MICROCONTROLLERS &EMBEDDED SYSTEMS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
+        <input type="text" className="form-control"  id="marks_mces" name="marks_mces" value={this.state.marks_mces} onChange={this.onStudChange.bind(this)} />
+    </div>
+    <br/>
+    
+    <div className="form-group">
+        <label htmlFor="marks_ooc">OBJECT ORIENTED CONCEPTS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;</label>
+        <input type="text" className="form-control"  id="marks_ooc" name="marks_ooc" value={this.state.marks_ooc} onChange={this.onStudChange.bind(this)} />
+    </div>
+    <br/>
+    <div className="form-group">
+        <label htmlFor="marks_dc">DATA COMMUNICATIONS&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;</label>
+        <input type="text" className="form-control"  id="marks_dc" name="marks_dc" value={this.state.marks_dc} onChange={this.onStudChange.bind(this)} />
+    </div>
+    <br/>
+    <div>
+  &emsp;&emsp;&emsp;<button type="submit" value="submit">Submit</button>
+  </div>
+    </form>
+
+  
+  <h3>{this.state.studdata}</h3>
+    </div>
+  );
+  
+  }
+// Getting access to entered values
+   onStudChange(event) 
+   {
+       this.setState({ [event.target.name]: event.target.value });  
+   }
+  
+}
+ReactDOM.render(<App />, document.getElementById('root'));
+
+    </script>
+    </center>
+  </body>
+</html>

@@ -1,0 +1,146 @@
+
+input[type=text], select {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+button[type=submit] {
+ color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color:#C84B31; 
+  border-collapse: collapse; 
+}
+
+button[type=submit]:hover {
+  background-color: #45a049;
+}
+
+body {
+        background-color: #DFEEEA;
+  font-family: "Ubuntu", sans-serif;
+   background-repeat: no-repeat;
+   background-position: center;
+}
+
+h1 {
+    border-collapse: collapse;
+    background-color:#194350;
+  color: white;
+  font-family: "Eczar", sans-serif;
+  width: 50%;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+p {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #A7C4BC;
+  font-family: "Trirong";
+  font-size: 20px;
+}
+
+
+  img
+  {
+    border-collapse: collapse;
+    width: 100%;
+    height:75%;
+
+  }
+ 
+  }
+  button {
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color:#C84B31; 
+  border-collapse: collapse;
+}
+button:hover {
+  border-style: solid;
+  background-color: #dee1ff;
+  color: black;
+  border-color: white;
+
+}
+
+th {
+    text-align:center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#73d7f0;
+  color: white;
+}
+table{
+  text-align:center;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td,th{
+     background-color:#dee1ff; 
+  border:px solid white;
+}ul {
+    border-radius: 8px;
+  list-style-type: none;
+  margin: 2px;
+  padding: 4px;
+  overflow: hidden;
+  background-color: #194350;
+   position: sticky;
+}
+
+li {
+    font-size: 24px;
+    border-radius: 6px;
+   
+    float: left;
+}
+
+ 
+li a {
+    background-color: #C84B31;
+   display:inline-block;
+  color: white;
+  text-align: center;
+  padding: 18px 26px;
+  text-decoration: none;
+   border-style:none;
+    border-color: #C84B31;
+
+}
+
+li a:hover {
+    border-style: solid;
+  background-color: #C84B31;
+  color: white;
+  border-color: white;
+}
+}
+form
+{
+  font-family: "Ubuntu";
+  font-size: 20px;
+}

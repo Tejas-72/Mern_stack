@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Display</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong|Roboto Mono|Ubuntu|Eczar|Scope One|Cutive">
+  <link rel="stylesheet" type="text/css" href="css/disp.css">
+</head>
+<body>
+	<center>
+	 <header style="background-color:#194350; color:#FBC7F7 ; text-align: center; padding-top:14px;padding-bottom: 16px;margin-bottom: 4px; border-radius: 8px; font-family: Cutive; width: 100%; font-size: 40px; " >
+    <center>
+    <header style="background-color:#C84B31 ;width: 50%; color:white ; border-radius:0px; "><strong>STUDENT &nbsp  MARKS &nbsp  DETAILS</strong></header>
+    </center>
+</header>
+   <img class="mySlides" src="images/1.jpeg">  
+    <center><ul>
+        <li><a href="index.html"><strong>HOME</strong></a></li>
+        <li><a href="insert.html"><strong>INSERT</a></strong></li>
+        <li><a href="update1.html"><strong>UPDATE</a></strong></li>
+        <li><a href="delete.html"><strong>DELETE</a></strong></li>
+        <li><a href="search.html"><strong>SEARCH</a></strong></li>
+        <li><a href="/display"><strong>DISPLAY</strong></a></li>
+    </ul></center>
+    <br><br><br><br><br>
+    <h1>STUDENT MARKS</h1><br>
+	<table style="width:100%" class="students">
+		<tr>
+			<th>USN</th>
+			<th>NAME</th>
+			<th>PHONE NO.</th>
+			<th>MATHS</th>
+			<th>DAA</th>
+			<th>OS</th>
+			<th>MCES</th>
+			<th>OOC</th>
+			<th>DC</th>
+			<th>PERCENTAGE</th>
+			
+		</tr>
+		<tr class="students">
+			<% for(var i=0; i<students.length; i++) {%>
+			<td><%=students[i].studusn%></td>
+			<td><%=students[i].studname%></td>
+			<td><%=+ students[i].studph%></td>
+			<td><%=+ students[i].marks_maths%></td>
+			<td><%=+ students[i].marks_daa%></td>
+			<td><%=+ students[i].marks_os%></td>
+			<td><%=+ students[i].marks_mces%></td>
+			<td><%=+ students[i].marks_ooc%></td>
+			<td><%=+ students[i].marks_dc%></td>
+			<td><%=+Math.round(parseInt(students[i].marks_maths)+parseInt(students[i].marks_daa)+parseInt(students[i].marks_os)
+			+parseInt(students[i].marks_mces)+parseInt(students[i].marks_ooc)+parseInt(students[i].marks_dc))/6%></td>
+			
+		</tr>
+		<% } %>
+	</table>
+</center>
+</body>
+</html>
+
